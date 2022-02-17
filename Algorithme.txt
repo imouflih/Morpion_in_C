@@ -1,0 +1,199 @@
+Données : Grille matrice des entiers de taille 3×3
+//ecrire une fonction pour vérifier si l'un des joueur a gagné et si c'est le cas afficher qui a gagné
+fonction comb_gagnante(Grille)
+Utilitaire : s1, s2, s3, s4, s5, s6, s7, s8 : des entiers
+début
+    s1 <- Grille[0][0] + Grille[0][1] + Grille[0][2]
+    s2 <- Grille[1][0] + Grille[1][1] + Grille[1][2]
+    s3 <- Grille[2][0] + Grille[2][1] + Grille[2][2]
+    s4 <- Grille[0][0] + Grille[1][0] + Grille[2][0]
+    s5 <- Grille[0][1] + Grille[1][1] + Grille[2][1]
+    s6 <- Grille[0][2] + Grille[1][2] + Grille[2][2]
+    s7 <- Grille[0][0] + Grille[1][1] + Grille[2][2]
+    s8 <- Grille[0][2] + Grille[1][1] + Grille[2][0]
+    
+    si (s1 = 3 ou s2 = 3 ou s3 = 3 ou s4 = 3 ou s5 = 3 ou s6 = 3 ou s7 = 3 ou s8 = 3)
+	afficher ('Joueur 1 a gagné')
+	renvoyer 1 
+    fin si
+    si (s1 = 0 ou s2 = 0 ou s3 = 0 ou s4 = 0 ou s5 = 0 ou s6 = 0 ou s7 = 0 ou s8 = 0)
+	afficher ('Joueur 2 a gagné')
+	renvoyer 1 
+    fin si
+    renvoyer 0
+fin
+
+//ecrire une fonction qui vérifier s'il n'y a plus de mouvement possible et si c'est le cas afficher Egalité
+fonction pas_mouvement_possible (Grille)
+utilitaire : i,j des entiers
+début
+    pour i allant de 0 à 2 par pas de 1
+	pour j allant de 0 à 2 par pas de 1
+	    si (Grille[i][j] == 4)
+		renvoyer 0
+	    fin si
+	fin pour
+    fin pour
+    afficher ('Egalité')
+    renvoyer 1
+fin
+
+//Afficher la grille
+fonction afficher_grille(Grille)
+utilitaire : i,j des entiers
+début
+    afficher ('\n    +===========+          *********************************\n')
+    pour i allant de 1 à 11 par pas de 1
+	afficher("    ")
+	pour j allant de 0 à 12 par pas de 1
+	    si (i=4 et j=12)
+                afficher("|          *********************************");
+            sinon si (i=3 et j=12)
+                afficher('|          *               *               *');
+            sinon si (i=2 et j=12)
+                afficher('|          * Joueur 1     * Joueur 2    *')
+            sinon si (i=1 et j=12)
+                afficher('|          *               *               *');
+            sinon si (i=2 et j=2)
+                si (Grille[0][0]=0)
+                    afficher('0')
+                sinon si (Grille[0][0]==1)
+                    afficher('X')
+                sinon
+                    afficher(' ')
+		fin si
+            sinon si (i=2 et j=6)
+                si (Grille[0][1]=0)
+                    afficher('0')
+                sinon si (Grille[0][1]==1)
+                    afficher('X')
+                sinon
+                    afficher(' ')
+		fin si
+            sinon si (i=2 et j=10)
+                si (Grille[0][2]=0)
+                    afficher('0')
+                sinon si (Grille[0][2]==1)
+                    afficher('X')
+                sinon
+                    afficher(' ')
+		fin si
+            sinon si (i=6 et j=2)
+                si (Grille[1][0]=0)
+                    afficher('0')
+                sinon si (Grille[1][0]==1)
+                    afficher('X')
+                sinon
+                    afficher(' ')
+		fin si
+            sinon si (i=6 et j=6)
+                si (Grille[1][1]=0)
+                    afficher('0')
+                sinon si (Grille[1][1]==1)
+                    afficher('X')
+                sinon
+                    afficher(' ')
+		fin si
+            sinon si (i=6 et j=10)
+                si (Grille[1][2]=0)
+                    afficher('0')
+                sinon si (Grille[1][2]==1)
+                    afficher('X')
+                sinon
+                    afficher(' ')
+		fin si
+            sinon si (i=10 et j=2)
+                si (Grille[2][0]=0)
+                    afficher('0')
+                sinon si (Grille[2][0]==1)
+                    afficher('X')
+                sinon
+                    afficher(' ')
+		fin si
+            sinon si (i=10 et j=6)
+                si (Grille[2][1]=0)
+                    afficher('0')
+                sinon si (Grille[2][1]==1)
+                    afficher('X')
+                sinon
+                    afficher(' ')
+		fin si
+            sinon si (i=10 et j=10)
+                si (Grille[2][2]=0)
+                    afficher('0')
+                sinon si (Grille[2][2]==1)
+                    afficher('X')
+                sinon
+                    afficher(' ')
+		fin si
+            sinon si (j=0 ou j=4 ou j=8 ou j=12)
+                afficher('|')
+            else if ((i=4 ou i=8) et (j!=0) et (j!=4) et (j!=8) et (j!=12))
+                afficher('=')
+            else
+                afficher(' ')
+	    fin si
+        afficher('\n')
+	fin pour
+    fin pour
+fin
+
+Programme principale
+données : Grille matrice des entiers de taille 3×3
+utilitaire : i,j, colonne,ligne des entiers
+    pour i allant de 0 à 3 par pas de 1
+        pour j allant de 0 à 3 par pas de 1
+            Grille[i][j] <- 4
+    afficher_grille(Grille);
+    for (int i=0;i<9;i++)
+    {
+        afficher('Joueur 1 :\n')
+        afficher("Coordonnees [0 - 2][0 - 2] ? : \n")
+        saisir(ligne)
+        saisir(colonne)
+        si (Grille[ligne][colonne] = 1 ou Grille[ligne][colonne] = 0)
+            afficher('Case occupee.\n\n')
+            afficher('Joueur 1 :\n')
+            afficher('Coordonnees [0 - 2][0 - 2] ? : \n')
+            saisir(ligne)
+            saisir(colonne)
+        fin si
+	si (ligne > 2 ou ligne < 0 ou colonne > 2 ou colonne < 0 )
+            afficher('Vous avez fait une faute.\n\n')
+            afficher('Joueur 1 :\n')
+            afficher('Coordonnees [0 - 2][0 - 2] ? : \n')
+            saisir(ligne)
+            saisir(colonne)
+	fin si
+        Grille[ligne][colonne] = 1
+        effacer la console
+        afficher_grille(Grille)
+        si ((comb_gagnante(Grille) = 1) ou (pas_mouvement_possible(Grille) = 1))
+            arrêter la boucle pour
+        fin si
+        afficher('Joueur 2 :\n')
+        afficher("Coordonnees [0 - 2][0 - 2] ? : \n")
+        saisir(ligne)
+        saisir(colonne)
+        si (Grille[ligne][colonne] = 1 ou Grille[ligne][colonne] = 0)
+            afficher('Case occupee.\n\n')
+            afficher('Joueur 2 :\n')
+            afficher('Coordonnees [0 - 2][0 - 2] ? : \n')
+            saisir(ligne)
+            saisir(colonne)
+        fin si
+	si (ligne > 2 ou ligne < 0 ou colonne > 2 ou colonne < 0 )
+            afficher('Vous avez fait une faute.\n\n')
+            afficher('Joueur 2 :\n')
+            afficher('Coordonnees [0 - 2][0 - 2] ? : \n')
+            saisir(ligne)
+            saisir(colonne)
+	fin si
+        Grille[ligne][colonne] = 0
+        effacer la console
+        afficher_grille(Grille)
+        si ((comb_gagnante(Grille) = 1) ou (pas_mouvement_possible(Grille) = 1))
+            arrêter la boucle pour
+        fin si
+    fin pour
+fin

@@ -1,0 +1,8 @@
+Nouvelle Partie : 
+Le joueur 1 a joué : [ 2 , 2 ].
+Le joueur 2 a joué : [ 1 , 2 ].
+Le joueur 1 a joué : [ 0 , 1 ].
+Le joueur 2 a joué : [ 0 , 0 ].
+Le joueur 1 a joué : [ 1 , 1 ].
+Le joueur 2 a joué : [ 0 , 2 ].
+Le joueur 1 a joué : [ 2 , 1 ].
